@@ -8,7 +8,7 @@ from utils.scraper import get_contents
 
 
 # Load the T5 and GPT-2 models
-T5_MODEL_NAME = "t5-base"
+T5_MODEL_NAME = "t5-small"
 GPT_MODEL_NAME = "openai-gpt"
 st.session_state["model"] = "t5"
 
