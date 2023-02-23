@@ -3,6 +3,7 @@ import tensorflow as tf
 import os
 
 def train_model(model, tokenizer, data_path):
+    tf.config.run_functions_eagerly(True)
     optimizer = tf.keras.optimizers.Adam()
     model.compile(optimizer=optimizer, loss=model.compute_loss, run_eagerly=True)
 
