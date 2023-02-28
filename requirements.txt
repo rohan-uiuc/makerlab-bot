@@ -1,7 +1,6 @@
-streamlit==1.9.0
-transformers==4.26.1
-beautifulsoup4
+streamlit
+berri-ai
+gpt_index
+html2text
 langchain
-protobuf~=3.19.0
-ftfy
-tensorflow
+BeautifulSoup4
