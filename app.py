@@ -37,20 +37,16 @@ def main():
         st.session_state["user_id"] = user_id
 
     # Get user context for this user
-    # print(user_context[user_id])
     context = user_context.setdefault(user_id, {})
 
     # Get previous query from user context
-    previous_response = context.get("previous_response", {})
-    previous_output = previous_response.get("output", {})
-    previous_response_text = previous_output.get("response", "")
     previous_query = context.get("previous_query", "")
 
     # Set current query to user context
     context["previous_query"] = user_input
 
     # Combine current and previous query
-    combined_query = previous_query + " " + user_input
+    combined_query = user_input
 
     window_size = 512
 
@@ -78,7 +74,6 @@ def main():
             text += element
             t.markdown(text)
 
-        context["previous_response"] = response
         user_context[user_id] = context
 
 if __name__ == "__main__":
