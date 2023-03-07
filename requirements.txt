@@ -1,5 +1,4 @@
 streamlit
-berri-ai
 gpt_index
 html2text
 langchain
