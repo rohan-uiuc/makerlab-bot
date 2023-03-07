@@ -1,6 +1,6 @@
 import os, uuid, json
 import time
-from berri_ai.ComplexInformationQA import ComplexInformationQA
+from ComplexQA import ComplexInformationQA
 import streamlit as st
 from index import create_index
 
@@ -61,7 +61,7 @@ def main():
         # Query the agent for each chunk and concatenate the response strings
         for chunk in query_chunks:
             # rate limit
-            chunk_response = agent.run(chunk, max_tokens=512)
+            chunk_response = agent.run(chunk)
             print("type" + str(type(chunk_response)))
             response.update(chunk_response)
             time.sleep(2)
