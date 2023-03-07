@@ -4,11 +4,6 @@ from gpt_index import GPTSimpleVectorIndex, BeautifulSoupWebReader, Document
 from PyPDF2 import PdfFileReader
 from bs4 import BeautifulSoup
 
-# @sleep_and_retry
-# @limits(calls=6, period=60)
-# def process_batch(documents):
-#
-#     return index
 index_file = './doc_qa.json'
 def create_index():
     if not os.path.isfile(index_file):
@@ -33,7 +28,7 @@ def create_index():
         print("Links extracted")
         # Read the contents of each link into a list of documents
         documents = BeautifulSoupWebReader().load_data(links)
-        with open('book.pdf', 'rb') as f:
+        with open('Book.pdf', 'rb') as f:
             pdf_reader = PdfFileReader(f)
             for i in range(pdf_reader.get_num_pages()):
                 page_text = pdf_reader.get_page_text(i)
