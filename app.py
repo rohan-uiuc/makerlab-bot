@@ -41,6 +41,9 @@ def main():
     context = user_context.setdefault(user_id, {})
 
     # Get previous query from user context
+    previous_response = context.get("previous_response", {})
+    previous_output = previous_response.get("output", {})
+    previous_response_text = previous_output.get("response", "")
     previous_query = context.get("previous_query", "")
 
     # Set current query to user context
@@ -61,7 +64,7 @@ def main():
         # Query the agent for each chunk and concatenate the response strings
         for chunk in query_chunks:
             # rate limit
-            chunk_response = agent.run(chunk)
+            chunk_response = agent.run(previous_query + " " + chunk)
             print("type" + str(type(chunk_response)))
             response.update(chunk_response)
             time.sleep(2)
@@ -75,7 +78,6 @@ def main():
             text += element
             t.markdown(text)
 
-        context["previous_query"] = user_input
         context["previous_response"] = response
         user_context[user_id] = context
 
