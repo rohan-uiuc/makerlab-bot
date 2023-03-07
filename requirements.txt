@@ -4,3 +4,4 @@ gpt_index
 html2text
 langchain
 BeautifulSoup4
+PyPDF2

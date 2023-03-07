@@ -1,6 +1,6 @@
 import os, uuid, json
 import time
-from berri_ai.ComplexInformationQA import ComplexInformationQA
+from ComplexQA import ComplexQA
 import streamlit as st
 from index import create_index
 
@@ -13,7 +13,8 @@ index = create_index()
 # Initialize agent
 functions = [index.query]
 descriptions = ["This is the knowledge base to query. Only use keywords while querying this database. Do not use full sentences."]
-agent = ComplexInformationQA(open_ai_key,None, None, functions, descriptions)
+
+agent = ComplexQA(open_ai_key,None, None, functions, descriptions)
 
 # User context dictionary
 user_context = {}
@@ -60,7 +61,7 @@ def main():
         # Query the agent for each chunk and concatenate the response strings
         for chunk in query_chunks:
             # rate limit
-            chunk_response = agent.run(chunk)
+            chunk_response = agent.run(chunk, max_tokens=512)
             print("type" + str(type(chunk_response)))
             response.update(chunk_response)
             time.sleep(2)
@@ -70,7 +71,7 @@ def main():
         text = ''
         t = st.empty()
         for element in final_response:
-            time.sleep(0.1)
+            time.sleep(0.05)
             text += element
             t.markdown(text)
 
