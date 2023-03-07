@@ -1,7 +1,7 @@
 import requests, os
 from urllib.parse import urlparse, urljoin
 from gpt_index import GPTSimpleVectorIndex, BeautifulSoupWebReader, Document
-from PyPDF2 import PdfFileReader
+from PyPDF2 import PdfReader
 from bs4 import BeautifulSoup
 
 index_file = './doc_qa.json'
@@ -29,9 +29,9 @@ def create_index():
         # Read the contents of each link into a list of documents
         documents = BeautifulSoupWebReader().load_data(links)
         with open('Book.pdf', 'rb') as f:
-            pdf_reader = PdfFileReader(f)
-            for i in range(pdf_reader.get_num_pages()):
-                page_text = pdf_reader.get_page_text(i)
+            pdf_reader = PdfReader(f)
+            for i in range(len(pdf_reader.pages)):
+                page_text = pdf_reader.pages[i].extract_text()
                 documents.append(Document(page_text))
 
         # Combine the text of all documents into a single string
