@@ -1,6 +1,6 @@
 import os, uuid, json
 import time
-from ComplexQA import ComplexQA
+from berri_ai.ComplexInformationQA import ComplexInformationQA
 import streamlit as st
 from index import create_index
 
@@ -14,7 +14,7 @@ index = create_index()
 functions = [index.query]
 descriptions = ["This is the knowledge base to query. Only use keywords while querying this database. Do not use full sentences."]
 
-agent = ComplexQA(open_ai_key,None, None, functions, descriptions)
+agent = ComplexInformationQA(open_ai_key,None, None, functions, descriptions)
 
 # User context dictionary
 user_context = {}
