@@ -4,4 +4,4 @@ html2text
 langchain
 BeautifulSoup4
 PyPDF2
-llama_index
+llama_index==0.4.14
