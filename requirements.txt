@@ -1,7 +1,10 @@
+dagster==1.1.7
+dagster-graphql==1.1.7
+faiss-cpu
+langchain==0.0.106
 streamlit
-gpt_index
-html2text
-langchain
-BeautifulSoup4
+beautifulsoup4
+tenacity
 PyPDF2
-llama_index==0.4.14
+huggingface_hub
+openai
