@@ -21,8 +21,7 @@ ul2_pkl = "ul2.pkl"
 ul2_index = "ul2.index"
 
 
-os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
-os.environ['OPENAI_API_KEY'] = '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'
+
 
 
 gpt_3_5 = OpenAI(model_name='gpt-3.5-turbo',temperature=0)
